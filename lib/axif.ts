@@ -1,3 +1,3 @@
-import Axif from "./axif";
+import Axif from "./core/axif";
 
-export Axif
+export default Axif

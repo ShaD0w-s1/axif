@@ -1,36 +1,12 @@
-import InterceptorManager from "./InterceptorManager";
+import interceptor from "./InterceptorManager";
+import request from "./dispatchRequest";
 
-interface config {
-  url: string;
-  method: string;
-}
-
-enum method {
-  'GET',
-  'POST',
-  'DELETE',
-  'PUT',
-  'PATCH'
-}
+export interface AxiosRequestConfig extends RequestInit {}
 
 export default class Axif {
-  public defaults: object;
-  public interceptors: object;
-  constructor(instanceConfig: object) {
-    this.defaults = instanceConfig;
-    this.interceptors = {
-      request: new InterceptorManager(),
-      response: new InterceptorManager(),
-    };
-  }
+  constructor(instanceConfig: object) {}
 
-  request(url: string, config: config) {
-
-    config.url = url;
-
-
-    config.method = config?.method ? config.method.toLowerCase() :
-   
-  
+  async request(url: string, config: AxiosRequestConfig) {
+    await request(url, config);
   }
 }
